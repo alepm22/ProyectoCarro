@@ -1,6 +1,6 @@
 function revision(comandos){
-    // Define una expresión regular para el formato
-    const formatoRegex = /^(\d+),(\d+)\/(\d+),(\d+)([NSEO])$/;
+    // Define una expresión regular para el formato el + verifica que por lo menos exista un comando
+    const formatoRegex = /^(\d+),(\d+)\/(\d+),(\d+)([NSEO])\/([IDAV]+)$/;
     // Intenta hacer coincidir la cadena de entrada con la expresión
     const coincidencia = comandos.match(formatoRegex);
     if (coincidencia) {
