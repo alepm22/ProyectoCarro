@@ -1,9 +1,11 @@
 import revision from "./RevisionFormato";
+let matrizX=0;
 let matrizY=0;
 
 function controlador(cadenaValor) {
       const resultadoRevision = revision(cadenaValor);
       matrizY=parseInt(cadenaValor[1], 10);
+      matrizX=parseInt(cadenaValor[0], 10);
       const respuesta = ControladorMovimientos(resultadoRevision.posicion_inicial, resultadoRevision.comandos_movimientos);
             return `${respuesta}`;
 }
@@ -95,9 +97,19 @@ function MovimientosAvanzar(posicionCambioX,posicionCambioY,cardinalidad) {
                   break;
                   case "E":
                         nuevaPosicionX = nuevaPosicionX+1;
+                        if(nuevaPosicionX<=matrizX){
+                              break;
+                        }else{
+                              nuevaPosicionX = nuevaPosicionX-1;
+                        }
                   break;
                   case "O":
                         nuevaPosicionX = nuevaPosicionX-1;
+                        if(nuevaPosicionX>=0){
+                              break;
+                        }else{
+                              nuevaPosicionX = nuevaPosicionX+1;
+                        }
                   break;
             default:
                   break;

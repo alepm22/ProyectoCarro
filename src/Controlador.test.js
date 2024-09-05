@@ -14,4 +14,12 @@ describe("Pruebas Controlador ", () => {
             expect(controlador("5,5/1,0S/A")).toEqual("1,0S");
         });
     });
+    describe("Verificacion Limites Movimientos Eje X", () => {
+        it ("Salida correcta", () => {
+            expect(controlador("5,5/5,5E/A")).toEqual("5,5E");
+        });
+        it ("Salida correcta cardinalidad S", () => {
+            expect(controlador("5,5/0,2O/A")).toEqual("0,2O");
+        });
+    });
 });
