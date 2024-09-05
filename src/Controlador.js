@@ -2,18 +2,24 @@ import revision from "./RevisionFormato";
 
 function controlador(cadenaValor) {
       const resultadoRevision = revision(cadenaValor);
-      const posicionInicialX = resultadoRevision.posicion_inicial[0];
-      const posicionInicialY = resultadoRevision.posicion_inicial[2];
-      const posicionInicialCardinal = resultadoRevision.posicion_inicial[3];
-      const direccionCardinal = resultadoRevision.comandos_movimientos;
-      const respuesta = MovimientosDerecha(posicionInicialCardinal, direccionCardinal);
-            return `${posicionInicialX},${posicionInicialY}${respuesta}`;
+      const respuesta = ControladorMovimientos(resultadoRevision.posicion_inicial, resultadoRevision.comandos_movimientos);
+            return `${respuesta}`;
 }
 
-function MovimientosDerecha(posicionInicialCardinal, direccionCardinal) {
-      let nuevaDireccionCardinal = posicionInicialCardinal;
+function ControladorMovimientos(Posicion, Comandos) {
+      let PosicionFinalX = Posicion[0];
+      let PosicionFinalY = Posicion[2];
+      let CardinalidadFinal = Posicion[3];
+      if(Comandos == "D"){
+            CardinalidadFinal=MovimientosDerecha(CardinalidadFinal);
+      }else{
+            CardinalidadFinal=MovimientosIzquierda(CardinalidadFinal);
+      }
+            return `${PosicionFinalX},${PosicionFinalY}${CardinalidadFinal}`;
+}
 
-      if (direccionCardinal === "D") {
+function MovimientosDerecha(posicionInicialCardinal) {
+      let nuevaDireccionCardinal = posicionInicialCardinal;
             switch (posicionInicialCardinal) {
                   case "N":
                         nuevaDireccionCardinal = "E";
@@ -30,8 +36,11 @@ function MovimientosDerecha(posicionInicialCardinal, direccionCardinal) {
             default:
             break;
       }
-      }
-      if (direccionCardinal === "I") {
+return nuevaDireccionCardinal;
+}
+
+function MovimientosIzquierda(posicionInicialCardinal) {
+      let nuevaDireccionCardinal = posicionInicialCardinal;
             switch (posicionInicialCardinal) {
                   case "N":
                         nuevaDireccionCardinal = "O";
@@ -47,7 +56,6 @@ function MovimientosDerecha(posicionInicialCardinal, direccionCardinal) {
                   break;
             default:
                   break;
-            }
             }
 return nuevaDireccionCardinal;
 }
