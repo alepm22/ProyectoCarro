@@ -1,7 +1,9 @@
 import revision from "./RevisionFormato";
+let matrizY=0;
 
 function controlador(cadenaValor) {
       const resultadoRevision = revision(cadenaValor);
+      matrizY=parseInt(cadenaValor[1], 10);
       const respuesta = ControladorMovimientos(resultadoRevision.posicion_inicial, resultadoRevision.comandos_movimientos);
             return `${respuesta}`;
 }
@@ -77,9 +79,19 @@ function MovimientosAvanzar(posicionCambioX,posicionCambioY,cardinalidad) {
             switch (cardinalidad) {
                   case "N":
                         nuevaPosicionY = nuevaPosicionY+1;
+                        if(nuevaPosicionY<=matrizY){
+                              break;
+                        }else{
+                              nuevaPosicionY = nuevaPosicionY-1;
+                        }
                   break;
                   case "S":
                         nuevaPosicionY = nuevaPosicionY-1;
+                        if(nuevaPosicionY>=0){
+                              break;
+                        }else{
+                              nuevaPosicionY = nuevaPosicionY+1;
+                        }
                   break;
                   case "E":
                         nuevaPosicionX = nuevaPosicionX+1;
