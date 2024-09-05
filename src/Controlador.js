@@ -1,39 +1,39 @@
 import revision from "./RevisionFormato";
-let matrizX=0;
 let matrizY=0;
+let matrizX=0;
 
 function controlador(cadenaValor) {
       const resultadoRevision = revision(cadenaValor);
-      matrizY=parseInt(cadenaValor[2], 10);
-      matrizX=parseInt(cadenaValor[0], 10);
-      const respuesta = ControladorMovimientos(resultadoRevision.posicion_inicial, resultadoRevision.comandos_movimientos);
-            return `${respuesta}`;
+      matrizY = parseInt(cadenaValor[2], 10);
+      matrizX = parseInt(cadenaValor[0], 10);
+      const respuesta = controlarMovimientos(resultadoRevision.posicion_inicial, resultadoRevision.comandos_movimientos, matrizX, matrizY);
+      return `${respuesta}`;
 }
 
-function ControladorMovimientos(Posicion, Comandos) {
+function controlarMovimientos(Posicion, Comandos, matrizX, matrizY) {
       let PosicionFinalX = Posicion[0];
       let PosicionFinalY = Posicion[2];
       let CardinalidadFinal = Posicion[3];
-      if(Comandos === "")
-      {
+
+      if (Comandos === "") {
             return `${PosicionFinalX},${PosicionFinalY}${CardinalidadFinal}`;
-      }else{
-            if(Comandos[0] == "D"){
-                  CardinalidadFinal=MovimientosDerecha(CardinalidadFinal);
-                  const posicion_actual= `${PosicionFinalX},${PosicionFinalY}${CardinalidadFinal}`
-                  return ControladorMovimientos(posicion_actual, Comandos.slice(1))
-            }else if(Comandos[0]== "I"){
-                  CardinalidadFinal=MovimientosIzquierda(CardinalidadFinal);
-                  const posicion_actual= `${PosicionFinalX},${PosicionFinalY}${CardinalidadFinal}`
-                  return ControladorMovimientos(posicion_actual, Comandos.slice(1))
-            }else if(Comandos[0]== "A"){
-                  const posicion_actual=MovimientosAvanzar(PosicionFinalX,PosicionFinalY,CardinalidadFinal);
-                  return ControladorMovimientos(posicion_actual, Comandos.slice(1))
+      } else {
+            if (Comandos[0] == "D") {
+                  CardinalidadFinal = GirarDerecha(CardinalidadFinal);
+                  const posicion_actual = `${PosicionFinalX},${PosicionFinalY}${CardinalidadFinal}`;
+                  return controlarMovimientos(posicion_actual, Comandos.slice(1), matrizX, matrizY);
+            } else if (Comandos[0] == "I") {
+                  CardinalidadFinal = GirarIzquierda(CardinalidadFinal);
+                  const posicion_actual = `${PosicionFinalX},${PosicionFinalY}${CardinalidadFinal}`;
+                  return controlarMovimientos(posicion_actual, Comandos.slice(1), matrizX, matrizY);
+            } else if (Comandos[0] == "A") {
+                  const posicion_actual = Avanzar(PosicionFinalX, PosicionFinalY, CardinalidadFinal, matrizX, matrizY);
+                  return controlarMovimientos(posicion_actual, Comandos.slice(1), matrizX, matrizY);
             }
       }
 }
 
-function MovimientosDerecha(posicionInicialCardinal) {
+function GirarDerecha(posicionInicialCardinal) {
       let nuevaDireccionCardinal = posicionInicialCardinal;
             switch (posicionInicialCardinal) {
                   case "N":
@@ -54,7 +54,7 @@ function MovimientosDerecha(posicionInicialCardinal) {
 return nuevaDireccionCardinal;
 }
 
-function MovimientosIzquierda(posicionInicialCardinal) {
+function GirarIzquierda(posicionInicialCardinal) {
       let nuevaDireccionCardinal = posicionInicialCardinal;
             switch (posicionInicialCardinal) {
                   case "N":
@@ -75,7 +75,7 @@ function MovimientosIzquierda(posicionInicialCardinal) {
 return nuevaDireccionCardinal;
 }
 
-function MovimientosAvanzar(posicionCambioX,posicionCambioY,cardinalidad) {
+function Avanzar(posicionCambioX,posicionCambioY,cardinalidad) {
       let nuevaPosicionY = parseInt(posicionCambioY, 10);
       let nuevaPosicionX = parseInt(posicionCambioX, 10);
             switch (cardinalidad) {
