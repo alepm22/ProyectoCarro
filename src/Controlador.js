@@ -10,12 +10,20 @@ function ControladorMovimientos(Posicion, Comandos) {
       let PosicionFinalX = Posicion[0];
       let PosicionFinalY = Posicion[2];
       let CardinalidadFinal = Posicion[3];
-      if(Comandos == "D"){
-            CardinalidadFinal=MovimientosDerecha(CardinalidadFinal);
-      }else{
-            CardinalidadFinal=MovimientosIzquierda(CardinalidadFinal);
-      }
+      if(Comandos === "")
+      {
             return `${PosicionFinalX},${PosicionFinalY}${CardinalidadFinal}`;
+      }else{
+            if(Comandos[0] == "D"){
+                  CardinalidadFinal=MovimientosDerecha(CardinalidadFinal);
+                  const posicion_actual= `${PosicionFinalX},${PosicionFinalY}${CardinalidadFinal}`
+                  return ControladorMovimientos(posicion_actual, Comandos.slice(1))
+            }else if(Comandos[0]== "I"){
+                  CardinalidadFinal=MovimientosIzquierda(CardinalidadFinal);
+                  const posicion_actual= `${PosicionFinalX},${PosicionFinalY}${CardinalidadFinal}`
+                  return ControladorMovimientos(posicion_actual, Comandos.slice(1))
+            }
+      }
 }
 
 function MovimientosDerecha(posicionInicialCardinal) {
