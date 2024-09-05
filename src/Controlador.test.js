@@ -14,4 +14,12 @@ describe("Pruebas Controlador ", () => {
             expect(controlador("5,5/1,2S/A")).toEqual("1,1S");
         });
     });
+    describe("Verificacion Movimientos Eje X", () => {
+        it ("Salida correcta cardinalidad E", () => {
+            expect(controlador("5,5/1,2E/A")).toEqual("2,2E");
+        });
+        it ("Salida correcta cardinalidad O", () => {
+            expect(controlador("5,5/1,2O/A")).toEqual("0,2O");
+        });
+    });
 });

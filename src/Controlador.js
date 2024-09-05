@@ -72,7 +72,8 @@ return nuevaDireccionCardinal;
 }
 
 function MovimientosAvanzar(posicionCambioX,posicionCambioY,cardinalidad) {
-      let nuevaPosicionY = parseInt(posicionCambioY, 10); ;
+      let nuevaPosicionY = parseInt(posicionCambioY, 10);
+      let nuevaPosicionX = parseInt(posicionCambioX, 10);
             switch (cardinalidad) {
                   case "N":
                         nuevaPosicionY = nuevaPosicionY+1;
@@ -80,10 +81,16 @@ function MovimientosAvanzar(posicionCambioX,posicionCambioY,cardinalidad) {
                   case "S":
                         nuevaPosicionY = nuevaPosicionY-1;
                   break;
+                  case "E":
+                        nuevaPosicionX = nuevaPosicionX+1;
+                  break;
+                  case "O":
+                        nuevaPosicionX = nuevaPosicionX-1;
+                  break;
             default:
                   break;
             }
-return `${posicionCambioX},${nuevaPosicionY}${cardinalidad}`;
+return `${nuevaPosicionX},${nuevaPosicionY}${cardinalidad}`;
 }
 
 export default controlador;
