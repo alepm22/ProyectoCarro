@@ -17,4 +17,12 @@ describe("Pruebas Controlador ", () => {
             expect(controlador("5,5/1,2E/I")).toEqual("1,2N");
         });
     });
+    describe("Verificacion Posicion Inicial 1,2S giro derecha e izquierda", () => {
+        it ("Posicion Inicial Correcta hacia la derecha", () => {
+            expect(controlador("5,5/1,2S/D")).toEqual("1,2O");
+        });
+        it ("Posicion Inicial Correcta hacia la izquierda", () => {
+            expect(controlador("5,5/1,2S/I")).toEqual("1,2E");
+        });
+    });
 });
