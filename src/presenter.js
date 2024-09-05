@@ -27,11 +27,11 @@ const actualizarPosicionInicialYComandos = () => {
   }
 };
 
-form.addEventListener("input", () => {
+form.addEventListener("input", () => { // Evento Mientras el input esta en cambio
   actualizarPosicionInicialYComandos();
 });
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", (event) => { // Evento cuando se apreta el boton ejecutar
   event.preventDefault();
   posicion_final.innerHTML = `<p>Posición Final: ${controlador(cadena.value)}</p>`;
 });
