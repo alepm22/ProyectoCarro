@@ -18,6 +18,9 @@ function MovimientosDerecha(posicionInicialCardinal, direccionCardinal) {
                   case "N":
                         nuevaDireccionCardinal = "E";
                         break;
+                  case "E":
+                        nuevaDireccionCardinal = "S";
+                        break;
             default:
             break;
       }
@@ -27,6 +30,9 @@ function MovimientosDerecha(posicionInicialCardinal, direccionCardinal) {
                   case "N":
                         nuevaDireccionCardinal = "O";
                   break;
+                  case "E":
+                        nuevaDireccionCardinal = "N";
+                        break;
             default:
                   break;
             }
