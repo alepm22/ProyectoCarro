@@ -22,6 +22,9 @@ function ControladorMovimientos(Posicion, Comandos) {
                   CardinalidadFinal=MovimientosIzquierda(CardinalidadFinal);
                   const posicion_actual= `${PosicionFinalX},${PosicionFinalY}${CardinalidadFinal}`
                   return ControladorMovimientos(posicion_actual, Comandos.slice(1))
+            }else if(Comandos[0]== "A"){
+                  const posicion_actual=MovimientosAvanzar(PosicionFinalX,PosicionFinalY,CardinalidadFinal);
+                  return ControladorMovimientos(posicion_actual, Comandos.slice(1))
             }
       }
 }
@@ -66,6 +69,21 @@ function MovimientosIzquierda(posicionInicialCardinal) {
                   break;
             }
 return nuevaDireccionCardinal;
+}
+
+function MovimientosAvanzar(posicionCambioX,posicionCambioY,cardinalidad) {
+      let nuevaPosicionY = parseInt(posicionCambioY, 10); ;
+            switch (cardinalidad) {
+                  case "N":
+                        nuevaPosicionY = nuevaPosicionY+1;
+                  break;
+                  case "S":
+                        nuevaPosicionY = nuevaPosicionY-1;
+                  break;
+            default:
+                  break;
+            }
+return `${posicionCambioX},${nuevaPosicionY}${cardinalidad}`;
 }
 
 export default controlador;
