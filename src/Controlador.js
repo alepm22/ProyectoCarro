@@ -14,14 +14,23 @@ function MovimientosDerecha(posicionInicialCardinal, direccionCardinal) {
       let nuevaDireccionCardinal = posicionInicialCardinal;
 
       if (direccionCardinal === "D") {
-      switch (posicionInicialCardinal) {
-            case "N":
-                  nuevaDireccionCardinal = "E";
-            break;
-      default:
+            switch (posicionInicialCardinal) {
+                  case "N":
+                        nuevaDireccionCardinal = "E";
+                        break;
+            default:
             break;
       }
       }
+      if (direccionCardinal === "I") {
+            switch (posicionInicialCardinal) {
+                  case "N":
+                        nuevaDireccionCardinal = "O";
+                  break;
+            default:
+                  break;
+            }
+            }
 return nuevaDireccionCardinal;
 }
 
