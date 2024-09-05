@@ -8,16 +8,16 @@ function revision(comandos){
         const posY = coincidencia[2];
         const posXI = coincidencia[3];
         const posYI = coincidencia[4];
-        if(posXI<=posX &&  posYI<=posY){
-        const direccion = coincidencia[5];
-        const cadenaDevolucion = `${posXI},${posYI}${direccion}`;
-        return cadenaDevolucion;
+        if (posXI <= posX && posYI <= posY) {
+            const cordinalidad = coincidencia[5];
+            const comandos_movimientos = coincidencia[6];
+            const posicion_inicial = `${posXI},${posYI}${cordinalidad}`;
+            return { posicion_inicial, comandos_movimientos };
         }
-}
-
-// La cadena de entrada no tiene el formato correcto
-  return false;
-}
-
-
-export default revision;
+    }
+    // La cadena de entrada no tiene el formato correcto
+    return false;
+  }
+  
+  
+  export default revision;
