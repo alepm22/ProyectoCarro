@@ -4,7 +4,7 @@ let matrizY=0;
 
 function controlador(cadenaValor) {
       const resultadoRevision = revision(cadenaValor);
-      matrizY=parseInt(cadenaValor[1], 10);
+      matrizY=parseInt(cadenaValor[2], 10);
       matrizX=parseInt(cadenaValor[0], 10);
       const respuesta = ControladorMovimientos(resultadoRevision.posicion_inicial, resultadoRevision.comandos_movimientos);
             return `${respuesta}`;

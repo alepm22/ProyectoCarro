@@ -22,4 +22,12 @@ describe("Pruebas Controlador ", () => {
             expect(controlador("5,5/0,2O/A")).toEqual("0,2O");
         });
     });
+    describe("Ejecucion de comandos completos", () => {
+        it ("Salida correcta Ejemplo 1", () => {
+            expect(controlador("5,5/1,2N/IAIAIAIAA")).toEqual("1,3N");
+        });
+        it ("Salida correcta Ejemplo 2", () => {
+            expect(controlador("5,5/3,3E/AADAADADDA")).toEqual("5,1E");
+        });
+    });
 });
