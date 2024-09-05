@@ -4,7 +4,7 @@ describe("Controlador ", () => {
 
     describe("Verificacion Posicion Inicial", () => {
     it ("Posicion Inicial Correcta", () => {
-        expect(controlador("1,2N")).toEqual("1,2N");
+        expect(controlador("5,5/1,2N")).toEqual("1,2N");
     });
 
     it ("Posicion Inicial Incorrecta", () => {
