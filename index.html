@@ -1,14 +1,13 @@
 <html>
   <body>
-    <h1>Sumador</h1>
-    <form id="sumar-form">
-      <label for="primer-numero">Primer número:</label>
-      <input type="number" id="primer-numero" />
-      <label for="segundo-numero">Segundo número:</label>
-      <input type="number" id="segundo-numero" />
-      <input type="submit" value="Sumar" id="sumar-button" />
+    <h1>Controlador de Autitos</h1>
+    <form id="Controlador-form">
+      <label for="Comandos">Ingrese la posición inicial:</label>
+      <input type="text" id="Comandos" />
+      <button type="submit" id="Ejecutar-button">Ejecutar</button>
     </form>
-    <div id="resultado-div"></div>
+    <div id="posicion_inicial"></div>
+    <div id="mensajes"></div>
 
     <script type="module" src="./src/presenter.js"></script>
   </body>

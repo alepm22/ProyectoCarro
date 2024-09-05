@@ -1,14 +1,13 @@
 function controlador(comandos){
 
-const formatoRegex = /^(\d+),(\d+)([NSEO])$/;
+   const formatoRegex = /^(\d+),(\d+)([NSEO])$/;
 
-const coincidencia = comandos.match(formatoRegex);
-if (coincidencia) {
-      return true;
-}
+   const coincidencia = comandos.match(formatoRegex);
+   if (coincidencia) {
+         return comandos;
+   }
 
-console.log("Formato incorrecto");
-return false;
+   return false;
 }
 
 
